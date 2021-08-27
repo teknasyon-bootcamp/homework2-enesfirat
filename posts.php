@@ -1,5 +1,4 @@
 <?php
-
 /**
  * posts.php
  *
@@ -19,4 +18,17 @@
  * çalıştırmalısınız. Bu fonksiyondan aldığınız diziyi kullanarak `post.php` betik
  * dosyasını döngü içinde dahil etmeli ve her yazı için detayları göstermelisiniz.
  */
+//functions.php'yi include ediyoruz. Once secmemizin sebebi tekrar tekrar include edersek fonksiyonlar karisiyor.
+require_once "functions.php";
+//min ve max degerlerini kendim atadim. Sayfada minimum 3 post maksimum 10 post olacak.
+$min = 3;
+$max = 10;
+$randomPostCount = getRandomPostCount($min, $max);
 
+$posts = getLatestPosts($randomPostCount);
+//post.php'deki kurallara gore postlarimizi ekrana yaziyoruz.
+foreach($posts as $id => $post){
+    $title = $post["title"];
+    $type = $post["type"];
+    include "post.php";
+}

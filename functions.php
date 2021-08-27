@@ -15,6 +15,13 @@
  * istiyoruz. Ek olarak, `getRandomPostCount` isminde bir fonksiyon tanımlamanızı
  * bekliyoruz. Bununla ilgili detaylı bilgi diğer betiklerde yer alıyor.
  */
+//functions.php'ye istek geldiginde hata kodu gosteriyoruz.
+
+// /functions.php'ye istek yollandiginda "403 Forbidden" yazdiriyoruz. Aslinda 200 kodu donuyoruz ama su anda. Sonra betigi sonlandirarak erisimi engellemis oluyoruz.
+if ($_SERVER ["PHP_SELF"] === "/functions.php"){
+    echo "403 Forbidden";
+    die();
+}
 
 function getLatestPosts($count = 5)
 {
@@ -48,4 +55,7 @@ EOT;
 }
 
 // Aşağıya fonksiyonu tanımlayabilirsiniz.
-
+//Bu fonksiyon, verilen iki deger arasinda kalan rasgele bir tam sayi verir.
+function getRandomPostCount($min, $max){
+    return rand($min, $max);
+}
